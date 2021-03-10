@@ -28,11 +28,13 @@
       ...mapGetters(["showLogin"])
     },
     methods:{
-      ...mapActions(["setUserData"])
+      ...mapActions(["setUserData","setToken"])
     },
     created(){
       getUserData().then((result)=>{
-        this.setUserData(result.data.data)
+
+        this.setUserData(result.data.data);
+          this.setToken(result.data.token);
       })
       
     },

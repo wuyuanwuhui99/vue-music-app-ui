@@ -25,3 +25,5 @@ export const SET_FAVORITE_LIST = 'SET_FAVORITE_LIST'
 export const SET_SHOW_LOGIN = 'SET_LOGIN'
 
 export const SET_USER_DATA = 'SET_USER_DATA'
+
+export const TOKEN = 'TOKEN';

@@ -34,3 +34,5 @@ export const favoriteList = state => state.favoriteList;
 export const showLogin = state => state.showLogin;
 
 export const userData = state => state.userData;
+
+export const token = state => state.token;

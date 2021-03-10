@@ -15,7 +15,8 @@ const state = {
   playHistory: loadPlay(),
   favoriteList: loadFavorite(),
   showLogin:false,
-  userData:{}
+  userData:{},
+  token:""
 }
 
 export default state

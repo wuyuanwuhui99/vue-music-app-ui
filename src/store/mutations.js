@@ -43,6 +43,9 @@ const mutations = {
   [types.SET_USER_DATA](state, userData) {
     state.userData = userData
   },
+    [types.TOKEN](state, token) {
+        state.token = token
+    },
 }
 
 export default mutations

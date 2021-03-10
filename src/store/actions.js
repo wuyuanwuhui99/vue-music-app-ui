@@ -150,3 +150,7 @@ export const setShowLogin = function ({commit}, showLogin) {
 export const setUserData = function ({commit}, userData) {
   commit(types.SET_USER_DATA, userData)
 }
+
+export const setToken = function ({commit}, token) {
+    commit(types.TOKEN, token)
+}

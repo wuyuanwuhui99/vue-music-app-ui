@@ -488,10 +488,8 @@
 
 					});
 				}else{
-				    debugger
 					getSingleSong(newSong.mid).then((item)=> {
-					    debugger;
-						var purl =  getValue(item,["data","req_0","data","midurlinfo","0","purl"])			
+						var purl =  getValue(item,["data","req_0","data","midurlinfo","0","purl"])
 						this.audioSrc = "http://isure.stream.qqmusic.qq.com/" + purl;
 						var url = purl ? this.audioSrc : ""; 
 						if(_this.timer) clearTimeout(_this.timer)
