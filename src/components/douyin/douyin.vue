@@ -77,7 +77,7 @@
 			this.showLoading = true;
             getDouyinList().then((result)=>{
 				this.showLoading = false;
-				this.douyinList = result.data.data;
+				this.douyinList = result.data;
             });
             this.$nextTick(()=>{
                 this.handlePlaylist(this.douyinList);
