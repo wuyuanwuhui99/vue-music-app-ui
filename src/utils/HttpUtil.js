@@ -9,9 +9,6 @@ export default class HttpUtil {
      */
     static get(url,config={}) {
         return new Promise((resolve, reject) => {
-            let token = localStorage.getItem("token");
-            if(!config.headers)config.headers = {};
-            config.headers = {...config.headers,...{Authorization:token}};
             axios.get(url,config).then((res)=>{
                 if(res.data.status=="success"){
                     resolve(res.data);
@@ -30,12 +27,6 @@ export default class HttpUtil {
      */
     static post(url, data,options={}) {
         return new Promise((resolve, reject) => {
-            let token = localStorage.getItem("token");
-            if(!options.headers){
-                options.headers = {Authorization:token};
-            }else{
-                options.headers = {...options.headers,...{Authorization:token}};
-            }
             axios.post(url, data, options).then((res)=>{
                 if(res.data.status=="success"){
                     resolve(res.data);
@@ -54,12 +45,6 @@ export default class HttpUtil {
      */
     static delete(url, data,options={}) {
         return new Promise((resolve, reject) => {
-            let token = localStorage.getItem("token");
-            if(!options.headers){
-                options.headers = {Authorization:token};
-            }else{
-                options.headers = {...options.headers,...{Authorization:token}};
-            }
             axios.delete(url, data, options).then((res)=>{
                 if(res.data.status=="success"){
                     resolve(res.data);
@@ -80,12 +65,6 @@ export default class HttpUtil {
      */
     static put(url, data,options={}) {
         return new Promise((resolve, reject) => {
-            let token = localStorage.getItem("token");
-            if (!options.headers) {
-                options.headers = {Authorization: token};
-            } else {
-                options.headers = {...options.headers, ...{Authorization: token}};
-            }
             axios.put(url, data, options).then((res) => {
                 if (res.data.status == "success") {
                     resolve(res.data);

@@ -1,5 +1,5 @@
 import {commonParams} from './config'
-import axios from "axios";
+import HttpUtil from "@/utils/HttpUtil";
 
 export function getTopList(){
 	const data = {...commonParams,...{
@@ -7,7 +7,7 @@ export function getTopList(){
 	    needNewCode: 1,
 	    platform: 'h5'
 	}};
-	return axios.get("/service/music/getTopList/", {params:data})
+	return HttpUtil.get("/service/music/getTopList/", {params:data})
 }
 
 export function getMusicList(topid) {
@@ -20,6 +20,6 @@ export function getMusicList(topid) {
 	    type: 'top',
 	    platform: 'h5'
 	}}
-  	return axios.get("/service/music/getMusicList/", {params:data})
+  	return HttpUtil.get("/service/music/getMusicList/", {params:data})
 }
 

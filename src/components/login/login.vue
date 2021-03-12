@@ -162,7 +162,7 @@ export default {
                 this.showTip = true;
                 this.tipContent = "登录成功";
                 setTimeout(() => {
-                    this.setUserData(result.data.data);
+                    this.setUserData(result.data);
                     this.setShowLogin(false);
                 }, 2000);
             });
@@ -187,7 +187,7 @@ export default {
                     this.showTip = true;
                     this.tipContent = "注册成功";
                     setTimeout(() => {
-                        this.setUserData(result.data.data);
+                        this.setUserData(result.data);
                         this.setShowLogin(false);
                     }, 2000);
                 }).catch((error)=>{

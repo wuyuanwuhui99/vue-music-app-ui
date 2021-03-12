@@ -1,12 +1,12 @@
 import {commonParams} from './config';
-import axios from 'axios'
+import HttpUtil from "@/utils/HttpUtil";
 export function getRecommend() {
 	const data={...commonParams, ...{
 	    platform: 'h5',
 	    uin: 0,
 	    needNewCode: 1
 	}}
-	return axios.get("/service/music/getRecommend/", {params:data})
+	return HttpUtil.get("/service/music/getRecommend/", {params:data})
 }
 
 export function getDiscList() {
@@ -22,7 +22,7 @@ export function getDiscList() {
 	    rnd: Math.random(),
 	    format: 'json'
 	}};
-	return axios.get(url,{
+	return HttpUtil.get(url,{
 		params:data	
 	}).then((res)=>{
 		return Promise.resolve(res.data)
@@ -43,7 +43,7 @@ export function getSongList(disstid) {
 		platform:"yqq",
 		needNewCode:0,
 	}};
-	return axios.get(url,{
+	return HttpUtil.get(url,{
 		params:data	
 	}).then((res)=>{
 		return Promise.resolve(res.data)

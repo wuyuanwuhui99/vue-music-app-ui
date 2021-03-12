@@ -1,6 +1,5 @@
 import {commonParams} from './config'
-import axios from "axios";
-
+import HttpUtil from "@/utils/HttpUtil";
 export function getHotKey() {
   	const data = {...commonParams,... {
     	uin: 0,
@@ -8,7 +7,7 @@ export function getHotKey() {
 		platform: 'h5',
   	}};
 
-  	return axios.get("service/music/getHotKey/",{params:data});
+  	return HttpUtil.get("service/music/getHotKey/",{params:data});
 }
 
 
@@ -35,5 +34,5 @@ export function search(query, page, zhida, perpage) {
 		needNewCode:1,
 	})
 
-	return axios.get("/service/music/search/", {params:data})
+	return HttpUtil.get("/service/music/search/", {params:data})
 }

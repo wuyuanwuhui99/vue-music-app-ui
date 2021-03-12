@@ -1,5 +1,6 @@
 import {commonParams} from './config'
-import axios from "axios";
+import HttpUtil from "@/utils/HttpUtil";
+
 export function getAudioUrl(currentSong,filename) {
 	const data = {...commonParams, ...{
 	    g_tk:5381,
@@ -15,7 +16,7 @@ export function getAudioUrl(currentSong,filename) {
 		filename:filename,
 		guid:"3397254710",
 	}}
-  	return axios.get("service/music/getAudioUrl/", {params:data})
+  	return HttpUtil.get("service/music/getAudioUrl/", {params:data})
 }
 
 export function getSingleSong(songmid) {
@@ -62,6 +63,6 @@ export function getSingleSong(songmid) {
 	// }
     //
 	// return axios.get("/service/music/getSingleSong/", {params:data})
-    return axios.get("/service/music/getSingleSong/", {params:{mid:songmid}})
+    return HttpUtil.get("/service/music/getSingleSong/", {params:{mid:songmid}})
 }
 

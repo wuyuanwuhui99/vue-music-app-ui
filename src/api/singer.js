@@ -1,6 +1,5 @@
 import {commonParams} from './config';
-import axios from "axios";
-
+import HttpUtil from "@/utils/HttpUtil";
 export function getSingerList(){
 	const data = Object.assign({}, commonParams, {
 	    channel: 'singer',
@@ -12,7 +11,7 @@ export function getSingerList(){
 	    needNewCode: 0,
 		platform: 'yqq',
 	})
-	return axios("/service/music/getSingerList/",{
+	return HttpUtil.get("/service/music/getSingerList/",{
 		params:data
 	})
 }
@@ -29,7 +28,7 @@ export function getSingerDetail(singerId) {
 		singermid: singerId,
 	})
 
-	return axios("/service/music/getSingerDetail/",{
+	return HttpUtil.get("/service/music/getSingerDetail/",{
 		params:data
 	})  
 }

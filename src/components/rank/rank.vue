@@ -55,7 +55,7 @@
       		_getTopList() {
         		getTopList().then((res) => {
           			if (res.data.code === ERR_OK) {
-            			this.topList = res.data.data.topList
+            			this.topList = res.data.topList
           			}
         		})
       		},
