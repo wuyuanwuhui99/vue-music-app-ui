@@ -39,11 +39,8 @@
 				this.setSinger(singer)
 			},
 			_getSingerList(){
-				let _this=this;
 				getSingerList().then((res)=>{
-					if(res.data.code==ERR_OK){
-						this.singers=this._normalizeSinger(res.data.data.list);
-					}
+                    this.singers=this._normalizeSinger(res.data);
 				})
 			},
 			_normalizeSinger(list){

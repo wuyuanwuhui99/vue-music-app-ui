@@ -76,9 +76,7 @@
       		},
       		_getHotKey() {
         		getHotKey().then((res) => {
-          			if (res.data.code === ERR_OK) {
-	          		this.hotKey = res.data.data.hotkey.slice(0, 10)
-	        		}
+	          		this.hotKey = res.data.hotkey.slice(0, 10)
 	        	})
 	      	},
 	    	...mapActions([

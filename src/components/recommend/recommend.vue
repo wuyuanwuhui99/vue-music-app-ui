@@ -5,8 +5,8 @@
 				<div v-if='recommends.length' class="slider-wrapper">
 					<Slider>
 						<div v-for='item in recommends'>
-							<a :href="item.linkUrl">
-								<img @load="loadImage" class="needsclick" :src="item.picUrl">
+							<a :href="item.id">
+								<img @load="loadImage" class="needsclick" :src="item.cover">
 							</a>
 						</div>
 					</Slider>
@@ -75,18 +75,13 @@
 			
 			_getRecommend(){
 				getRecommend().then((res)=>{
-					if(res.data.code==ERR_OK){
-						this.recommends=res.data.data.slider;
-					}
+                    this.recommends=res.data;
 				})
 			},
 			
 			_getDiscList(){
-				let _this=this;
-				getDiscList().then(function(res){
-					if(res.code===ERR_OK){
-						_this.discList=res.data.list;
-					}
+				getDiscList().then((res)=>{
+                    this.discList=res.list;
 				})
 			},
 			

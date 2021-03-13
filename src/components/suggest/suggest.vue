@@ -64,10 +64,8 @@
 	        	this.hasMore = true
 	        	this.$refs.suggest.scrollTo(0, 0)
 	        	search(this.query, this.page, this.showSinger, perpage).then((res) => {
-		          	if (res.data.code === ERR_OK) {
-		            	this.result = this._genResult(res.data.data);
-		            	this._checkMore(res.data.data)
-		          	}
+                    this.result = this._genResult(res.data);
+                    this._checkMore(res.data)
 		        })
 	      	},
 	      	searchMore() {

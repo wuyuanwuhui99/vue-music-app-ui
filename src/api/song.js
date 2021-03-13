@@ -2,19 +2,9 @@ import {commonParams} from './config'
 import store from '@/store';
 import HttpUtil from "@/utils/HttpUtil";
 
-export function getLyric(mid) {
-  const data = {...commonParams, ...{
-    songmid: mid,
-    platform: 'yqq',
-    hostUin: 0,
-    needNewCode: 0,
-    categoryId: 10000000,
-    pcachetime: +new Date(),
-    format: 'json'
-  }}
-
-  return HttpUtil.get('/service/music/lyric/', {
-    params: data
+export function getLyric(songmid) {
+  return HttpUtil.get('/service/music/getLyric/', {
+    params: {songmid}
   }).then((res) => {
     return Promise.resolve(res.data)
   })

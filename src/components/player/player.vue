@@ -454,11 +454,9 @@
 		},
 		watch: {
 			currentSong(newSong, oldSong) {
-			    debugger
 				if(newSong.id == oldSong.id){
 					return
 				}
-
 				queryFavorite({userId:this.userData.userId,mid:newSong.mid}).then((result)=>{
 					this.favoriteFlag = result.data.data.length > 0 ? true : false
 				});

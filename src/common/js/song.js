@@ -30,15 +30,10 @@ export default class Song {
           resolve(this.lyric)
       }else{
           getLyric(this.mid).then((res) => {
-              if (res.retcode === ERR_OK) {
-                  this.lyric = Base64.decode(res.lyric)
-                  resolve(this.lyric)
-              } else {
-                  reject('no lyric')
-              }
+              this.lyric = Base64.decode(res.lyric)
+              resolve(this.lyric)
           })
       }
-
     })
   }
 }
