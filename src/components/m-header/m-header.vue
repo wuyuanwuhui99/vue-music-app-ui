@@ -17,9 +17,9 @@
         methods:{
             goMyRouter(){
                 if(!this.userData.userId){
-                    this.$router.push("/login")
+                    this.$router.replace("/login")
                 }else{
-                    this.$router.push("/my");
+                    this.$router.replace("/my");
                 }
             },
 

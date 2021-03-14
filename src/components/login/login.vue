@@ -1,7 +1,6 @@
 <template>
     <transition name="fade">
         <div class="login-wrapper">
-            <div class="login-bg"></div>
             <div class="login-content">
                 <ul class="tab-wrapper">
                     <li class="tab-item" :class="{active:currentIndex == 0}" @click="tab(0)">登录</li>
@@ -12,7 +11,7 @@
                         <form autocomplete="off">
                             <ul class="login-form">
                                 <li class="login-item">
-                                    <span class="icon-login icon-user-username"></span>
+                                    <span class="icon-login icon-user"></span>
                                     <input
                                         class="login-input input-userId"
                                         placeholder="请输入用户名"
@@ -22,7 +21,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-user-password"></span>
+                                    <span class="icon-login icon-password"></span>
                                     <input
                                         class="login-input input-password"
                                         placeholder="请输入密码"
@@ -41,7 +40,7 @@
                         <form autocomplete="off">
                             <ul class="login-form">
                                 <li class="login-item">
-                                    <span class="icon-login icon-user-username"></span>
+                                    <span class="icon-login icon-user"></span>
                                     <input
                                         class="login-input input-userId"
                                         placeholder="请输入用户名"
@@ -50,7 +49,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-user-password"></span>
+                                    <span class="icon-login icon-password"></span>
                                     <input
                                         class="login-input input-password"
                                         placeholder="请输入密码"
@@ -61,7 +60,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-user-telephone"></span>
+                                    <span class="icon-login icon-telephone"></span>
                                     <input
                                         class="login-input input-telephone"
                                         placeholder="请输入手机号码"
@@ -70,7 +69,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-user-email"></span>
+                                    <span class="icon-login icon-email"></span>
                                     <input
                                         class="login-input input-email"
                                         placeholder="请输入邮箱"
@@ -228,7 +227,7 @@ export default {
     z-index: 666;
     top: 0;
     left: 0;
-
+    background: @color-background;
     .login-bg {
         background: url(./loginbg.jpg) no-repeat;
         background-size: cover;

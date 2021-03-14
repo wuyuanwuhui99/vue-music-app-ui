@@ -55,6 +55,10 @@ export default new Router({
         {
             path: '/my',
             component: resolve=>(require(["components/my/my"],resolve))
+        },
+        {
+            path: '/login',
+            component: resolve=>(require(["components/login/login"],resolve))
         }
 	]
 })

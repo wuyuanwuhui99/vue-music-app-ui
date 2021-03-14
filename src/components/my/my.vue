@@ -108,7 +108,7 @@
                     this.tipContent = "退出登录成功";
                     this.setUserData({});
                     setTimeout(()=>{
-                        this.$router.go(-1);
+                        this.$router.replace("/login");
                     },2000);
                 })
             },
