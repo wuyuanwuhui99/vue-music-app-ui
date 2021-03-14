@@ -12,7 +12,7 @@
                         <form autocomplete="off">
                             <ul class="login-form">
                                 <li class="login-item">
-                                    <span class="icon-login icon-user"></span>
+                                    <span class="icon-login icon-user-username"></span>
                                     <input
                                         class="login-input input-userId"
                                         placeholder="请输入用户名"
@@ -22,7 +22,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-password"></span>
+                                    <span class="icon-login icon-user-password"></span>
                                     <input
                                         class="login-input input-password"
                                         placeholder="请输入密码"
@@ -41,7 +41,7 @@
                         <form autocomplete="off">
                             <ul class="login-form">
                                 <li class="login-item">
-                                    <span class="icon-login icon-user"></span>
+                                    <span class="icon-login icon-user-username"></span>
                                     <input
                                         class="login-input input-userId"
                                         placeholder="请输入用户名"
@@ -50,7 +50,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-password"></span>
+                                    <span class="icon-login icon-user-password"></span>
                                     <input
                                         class="login-input input-password"
                                         placeholder="请输入密码"
@@ -61,7 +61,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-telephone"></span>
+                                    <span class="icon-login icon-user-telephone"></span>
                                     <input
                                         class="login-input input-telephone"
                                         placeholder="请输入手机号码"
@@ -70,7 +70,7 @@
                                     />
                                 </li>
                                 <li class="login-item">
-                                    <span class="icon-login icon-email"></span>
+                                    <span class="icon-login icon-user-email"></span>
                                     <input
                                         class="login-input input-email"
                                         placeholder="请输入邮箱"
@@ -161,10 +161,12 @@ export default {
             doLogin({...this.loginParams,password}).then(result => {
                 this.showTip = true;
                 this.tipContent = "登录成功";
+                this.setUserData(result.data);
+                this.setShowLogin(false);
                 setTimeout(() => {
-                    this.setUserData(result.data);
-                    this.setShowLogin(false);
+                    this.$router.go(-1);
                 }, 2000);
+
             });
         },
 
@@ -209,7 +211,7 @@ export default {
 <style lang="less" scoped>
 // @import "icon.css";
 @import "~common/less/variable.less";
-@import "~common/less/icon-login.less";
+@import "~common/less/icon.less";
 .fade-enter-active,.fade-leave-active{
     transition: all 1s;
     transform: translate3d(0, 0, 0);

@@ -1,6 +1,8 @@
 <template>
     <div class="toast-wrapper" v-show="show">
-        <slot></slot>
+        <slot>
+            <div :style="{color:colors[type]}">{{tipContent}}</div>
+        </slot>
     </div>
 </template>
 
@@ -18,11 +20,23 @@ export default {
         timeout:{
             type:Number,
             default:2000
-        }
+        },
+        tipContent:""
     },
     model:{
         prop: 'show',
         event: 'returnBack'
+    },
+
+    data(){
+        return {
+            colors:{
+                normal:"#fff",
+                success:"green",
+                fail:"red"
+            }
+        }
+
     },
 
     watch:{

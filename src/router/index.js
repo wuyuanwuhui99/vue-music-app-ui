@@ -2,107 +2,59 @@ import Vue from 'vue'
 import Router from 'vue-router';
 Vue.use(Router)
 
-const Recommend = (resolve) => {
-	import('components/recommend/recommend').then((module) => {
-	    resolve(module)
-	})
-}
-
-const Singer = (resolve) => {
-	import('components/singer/singer').then((module) => {
-	    resolve(module)
-	})
-}
-
-const Rank = (resolve) => {
-	import('components/rank/rank').then((module) => {
-	    resolve(module)
-	})
-}
-const Search = (resolve) => {
-	import('components/search/search').then((module) => {
-	    resolve(module)
-	})
-}
-
-const SingerDetail = (resolve) => {
-	import('components/singer-detail/singer-detail').then((module) => {
-	    resolve(module)
-	})
-}
-
-const Disc = (resolve) => {
-	import('components/disc/disc').then((module) => {
-	    resolve(module)
-	})
-}
-
-const TopList = (resolve) => {
-	import('components/top-list/top-list').then((module) => {
-	    resolve(module)
-	})
-}
-
-const UserCenter = (resolve) => {
-	import('components/user-center/user-center').then((module) => {
-	    resolve(module)
-	})
-}
-
-const Douyin = (resolve) => {
-	import('components/douyin/douyin').then((module) => {
-	    resolve(module)
-	})
-}
-
 export default new Router({
-	routes: [{
+	routes: [
+	    {
 			path: '/',
 			redirect: '/douyin'
 		},
 		{
 			path: '/recommend',
-			component: Recommend,
+			component: resolve=>(require(["components/recommend/recommend"],resolve)),
 			children: [{
 				path: ':id',
-				component: Disc
+				component: resolve=>(require(["components/disc/disc"],resolve))
 			}]
 		},
 		{
 			path: '/singer',
-			component: Singer,
+			component: resolve=>(require(["components/singer/singer"],resolve)),
 			children: [{
 				path: ':id',
-				component: SingerDetail
+				component: resolve=>(require(["components/singer-detail/singer-detail"],resolve))
 			}]
 		},
 		{
 			path: '/rank',
-			component: Rank,
+			component:  resolve=>(require(["components/rank/rank"],resolve)),
 		    children: [
 		      	{
 		       		path: ':id',
-		        	component: TopList
+		        	component: resolve=>(require(["components/top-list/top-list"],resolve))
 		      	}
 		    ]
 		},
 		{
 			path: '/search',
-			component: Search,
+			component: resolve=>(require(["components/search/search"],resolve)),
 		    children: [
 		      {
 		        path: ':id',
-		        component: SingerDetail
+		        component: resolve=>(require(["components/singer-detail/singer-detail"],resolve))
 		      }
 		    ]
 		},
 		{
 		    path: '/user',
-		    component: UserCenter
+		    component: resolve=>(require(["components/user-center/user-center"],resolve))
 		},
 		{
 		    path: '/douyin',
-		    component: Douyin
-		}
+		    component: resolve=>(require(["components/douyin/douyin"],resolve))
+		},
+        {
+            path: '/my',
+            component: resolve=>(require(["components/my/my"],resolve))
+        }
 	]
 })
