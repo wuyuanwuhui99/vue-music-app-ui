@@ -3,10 +3,14 @@
 **作者：吴怨吴悔**
 
 
-![](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music.jpg)
-![](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_01.jpg)
-![](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_02.jpg)
-![](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_03.jpg)
+
+=======================================jiemianyulan========================================
+![zhengtiyulan](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music.jpg)
+![shoujiduanyulanxiaoguo1](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_01.jpg)
+![shoujiduanyulanxiaoguo1](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_02.jpg)
+![shoujiduanyulanxiaoguo1](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_03.jpg)
+=======================================jiemianyulan========================================
+
 
 
 开发时间：2017-12
