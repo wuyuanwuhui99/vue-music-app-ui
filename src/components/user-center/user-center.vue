@@ -109,11 +109,10 @@
 				"setShowLogin"
 			]),
 			  
-			getFavoriteMusic(){
-				getFavorite(this.userData.userId).then((res)=>{
-					this.favoriteList = res.data.data || []
-				})
-			}
+			async getFavoriteMusic() {
+                await getFavorite(this.userData.userId);
+                this.favoriteList = res.data || []
+            }
 	    },
     	components: {
       		Switches,

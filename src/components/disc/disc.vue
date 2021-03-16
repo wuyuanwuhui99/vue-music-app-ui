@@ -32,15 +32,14 @@
       		this._getSongList()
     	},
    		methods: {
-      	_getSongList() {
-	      	if (!this.disc.dissid) {
-	          	this.$router.push('/recommend')
-	          	return
-	        }
-	        getSongList(this.disc.dissid).then((res) => {
-                this.songs = this._normalizeSongs(res.songlist)
-	        })
-      	},
+      	async _getSongList() {
+            if (!this.disc.dissid) {
+                this.$router.push('/recommend')
+                return
+            }
+            let res = await getSongList(this.disc.dissid);
+            this.songs = this._normalizeSongs(res.songlist)
+        },
       	_normalizeSongs(list) {
         	let ret = []
 	        list.forEach((musicData) => {

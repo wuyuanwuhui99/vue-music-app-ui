@@ -38,11 +38,10 @@
 				})
 				this.setSinger(singer)
 			},
-			_getSingerList(){
-				getSingerList().then((res)=>{
-                    this.singers=this._normalizeSinger(res.data);
-				})
-			},
+			async _getSingerList() {
+                let res = await getSingerList();
+                this.singers = this._normalizeSinger(res.data);
+            },
 			_normalizeSinger(list){
 				let map={
 					hot:{

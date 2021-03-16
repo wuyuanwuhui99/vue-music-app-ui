@@ -7,7 +7,6 @@
 <script type="text/ecmascript-6">
   import MusicList from 'components/music-list/music-list'
   import {getMusicList} from 'api/rank'
-  import {ERR_OK} from 'api/config'
   import {mapGetters} from 'vuex'
   import {createSong} from 'common/js/song'
 
@@ -36,16 +35,13 @@
       this._getMusicList()
     },
     methods: {
-      _getMusicList() {
-        if (!this.topList.id) {
-          this.$router.push('/rank')
-          return
-        }
-        getMusicList(this.topList.id).then((res) => {
-          if (res.data.code === ERR_OK) {
-            this.songs = this._normalizeSongs(res.data.songlist)
+      async _getMusicList() {
+          if (!this.topList.id) {
+              this.$router.push('/rank')
+              return
           }
-        })
+          let res = await getMusicList(this.topList.id);
+          this.songs = this._normalizeSongs(res.songlist)
       },
       _normalizeSongs(list) {
         let ret = []

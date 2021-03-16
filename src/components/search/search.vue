@@ -74,11 +74,10 @@
       		showConfirm() {
         		this.$refs.confirm.show()
       		},
-      		_getHotKey() {
-        		getHotKey().then((res) => {
-	          		this.hotKey = res.data.hotkey.slice(0, 10)
-	        	})
-	      	},
+      		async _getHotKey() {
+                let res = await getHotKey();
+                this.hotKey = res.data.hotkey.slice(0, 10)
+            },
 	    	...mapActions([
 	      		'clearSearchHistory',
 	    	]),

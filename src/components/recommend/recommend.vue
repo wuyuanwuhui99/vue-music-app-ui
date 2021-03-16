@@ -73,16 +73,14 @@
         		this.$refs.scroll.refresh()
 			},
 			
-			_getRecommend(){
-				getRecommend().then((res)=>{
-                    this.recommends=res.data;
-				})
-			},
+			async _getRecommend() {
+                let res = await getRecommend();
+                this.recommends = res.data;
+            },
 			
 			_getDiscList(){
-				getDiscList().then((res)=>{
-                    this.discList=res.list;
-				})
+				let res = getDiscList();
+                this.discList=res.list;
 			},
 			
 			loadImage(){

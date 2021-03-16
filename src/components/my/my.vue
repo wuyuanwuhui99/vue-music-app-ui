@@ -80,25 +80,24 @@
             },
 
             //保存用户信息
-            save(){
-                if(!this.myUserData.username){
+            async save() {
+                if (!this.myUserData.username) {
                     this.showTip = true;
                     this.tipContent = "用户名不能为空";
                     return;
-                }else if(!this.myUserData.email){
+                } else if (!this.myUserData.email) {
                     this.showTip = true;
                     this.tipContent = "邮箱不能为空";
                     return;
-                }else if(!this.myUserData.telephone){
+                } else if (!this.myUserData.telephone) {
                     this.showTip = true;
                     this.tipContent = "电话不能为空";
                     return;
                 }
-                updateUser(this.myUserData).then((res)=>{
-                    this.setUserData(res.data);
-                    this.showTip = true;
-                    this.tipContent = "修改用户信息成功";
-                });
+                let res = await updateUser(this.myUserData);
+                this.setUserData(res.data);
+                this.showTip = true;
+                this.tipContent = "修改用户信息成功";
             },
 
             //退出登录

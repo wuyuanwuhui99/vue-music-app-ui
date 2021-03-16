@@ -425,25 +425,23 @@
 					scale
 				}
 			},
-			toggleFavorite(params){
-				if(this.userData.userId){
-					if(this.favoriteFlag){//如果已经收藏过，点击之后取消收藏
-						deleteFavorite(params).then((result)=>{
-							if(result.data.affectedRows == 1){
-								this.favoriteFlag = false;
-							}
-						})
-					}else{
-						addFavorite(params).then((result)=>{
-							this.favoriteFlag = true;
-						});
-					}
-					
-				}else{
-					this.setShowLogin(true);
-				}
-				
-			},
+			async toggleFavorite(params) {
+                if (this.userData.userId) {
+                    if (this.favoriteFlag) {//如果已经收藏过，点击之后取消收藏
+                        let result = await deleteFavorite(params)
+                        if (result.data.affectedRows == 1) {
+                            this.favoriteFlag = false;
+                        }
+                    } else {
+                        await addFavorite(params);
+                        this.favoriteFlag = true;
+                    }
+
+                } else {
+                    this.setShowLogin(true);
+                }
+
+            },
 			...mapMutations({
 				setFullScreen: 'SET_FULL_SCREEN',
 			}),
@@ -453,55 +451,50 @@
 		    ])
 		},
 		watch: {
-			currentSong(newSong, oldSong) {
-				if(newSong.id == oldSong.id){
-					return
-				}
-				queryFavorite({userId:this.userData.userId,mid:newSong.mid}).then((result)=>{
-					this.favoriteFlag = result.data.data.length > 0 ? true : false
-				});
-				var _this = this;
-				if (this.currentLyric) {
-				    this.currentLyric.stop()
-				    this.currentTime = 0
-				    this.playingLyric = ''
-				    this.currentLineNum = 0
-				};
-				if(newSong.url){//如果歌曲的url存在就直接赋值
-					if(newSong.playMode=="qq"){
-						this.audioSrc = newSong.url;
-					}else if(newSong.playMode =="kugou"){
-						this.audioSrc = newSong.kugouUrl;
-					}else if(newSong.playMode == "local"){
-						this.audioSrc = newSong.localUrl;
-					}else if(newSong.playMode == "other"){
-						this.audioSrc = newSong.otherUrl
-					}
-					if(_this.timer) clearTimeout(_this.timer)
-					_this.timer = setTimeout(() => {
-						_this.$refs.audio.play();
-						_this.getLyric()
-					},1000);
-					setRecord({...newSong,userId:this.userData.userId}).then((result)=>{//记录播放次数
-
-					});
-				}else{
-					getSingleSong(newSong.mid).then((item)=> {
-						var purl =  getValue(item,["data","req_0","data","midurlinfo","0","purl"])
-						this.audioSrc = "http://isure.stream.qqmusic.qq.com/" + purl;
-						var url = purl ? this.audioSrc : ""; 
-						if(_this.timer) clearTimeout(_this.timer)
-						_this.timer = setTimeout(() => {
-							_this.$refs.audio.play();
-							_this.getLyric()
-						},1000);
-                        newSong.url = url;
-						setRecord({...newSong,userId:this.userData.userId,url}).then((result)=>{//记录播放次数
-
-						});
-					})
-				}
-			},
+			async currentSong(newSong, oldSong) {
+                if (newSong.id == oldSong.id) {
+                    return
+                }
+                let result =await queryFavorite({userId: this.userData.userId, mid: newSong.mid});
+                this.favoriteFlag = result.data.length > 0 ? true : false
+                var _this = this;
+                if (this.currentLyric) {
+                    this.currentLyric.stop()
+                    this.currentTime = 0
+                    this.playingLyric = ''
+                    this.currentLineNum = 0
+                }
+                ;
+                if (newSong.url) {//如果歌曲的url存在就直接赋值
+                    if (newSong.playMode == "qq") {
+                        this.audioSrc = newSong.url;
+                    } else if (newSong.playMode == "kugou") {
+                        this.audioSrc = newSong.kugouUrl;
+                    } else if (newSong.playMode == "local") {
+                        this.audioSrc = newSong.localUrl;
+                    } else if (newSong.playMode == "other") {
+                        this.audioSrc = newSong.otherUrl
+                    }
+                    if (_this.timer) clearTimeout(_this.timer)
+                    _this.timer = setTimeout(() => {
+                        _this.$refs.audio.play();
+                        _this.getLyric()
+                    }, 1000);
+                    setRecord({...newSong, userId: this.userData.userId})//记录播放次数
+                } else {
+                    let item = await getSingleSong(newSong.mid);
+                    var purl = getValue(item, ["data", "req_0", "data", "midurlinfo", "0", "purl"])
+                    this.audioSrc = "http://isure.stream.qqmusic.qq.com/" + purl;
+                    var url = purl ? this.audioSrc : "";
+                    if (_this.timer) clearTimeout(_this.timer)
+                    _this.timer = setTimeout(() => {
+                        _this.$refs.audio.play();
+                        _this.getLyric()
+                    }, 1000);
+                    newSong.url = url;
+                    setRecord({...newSong, userId: this.userData.userId, url})//记录播放次数
+                }
+            },
 			playing(newPlaying) {
 				const audio = this.$refs.audio
 				this.$nextTick(() => {

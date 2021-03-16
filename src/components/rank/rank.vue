@@ -52,13 +52,10 @@
         		})
         		this.setTopList(item)
       		},
-      		_getTopList() {
-        		getTopList().then((res) => {
-          			if (res.data.code === ERR_OK) {
-            			this.topList = res.data.topList
-          			}
-        		})
-      		},
+      		async _getTopList() {
+                let res = await getTopList();
+                this.topList = res.topList
+            },
       		...mapMutations({
         		setTopList: 'SET_TOP_LIST'
       		})

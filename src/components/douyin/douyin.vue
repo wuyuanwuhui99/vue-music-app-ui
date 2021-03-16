@@ -73,13 +73,12 @@
 			loading
         },
 
-        mounted() {
-			this.showLoading = true;
-            getDouyinList().then((result)=>{
-				this.showLoading = false;
-				this.douyinList = result.data;
-            });
-            this.$nextTick(()=>{
+        async mounted() {
+            this.showLoading = true;
+            let result = await getDouyinList()
+            this.showLoading = false;
+            this.douyinList = result.data;
+            this.$nextTick(() => {
                 this.handlePlaylist(this.douyinList);
             });
         },

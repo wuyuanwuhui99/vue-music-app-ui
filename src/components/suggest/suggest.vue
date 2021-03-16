@@ -59,15 +59,14 @@
 	      	refresh() {
 	        	this.$refs.suggest.refresh()
 	      	},
-	      	search() {
-	        	this.page = 1
-	        	this.hasMore = true
-	        	this.$refs.suggest.scrollTo(0, 0)
-	        	search(this.query, this.page, this.showSinger, perpage).then((res) => {
-                    this.result = this._genResult(res.data);
-                    this._checkMore(res.data)
-		        })
-	      	},
+	      	async search() {
+                this.page = 1
+                this.hasMore = true
+                this.$refs.suggest.scrollTo(0, 0)
+                let res = await search(this.query, this.page, this.showSinger, perpage);
+                this.result = this._genResult(res.data);
+                this._checkMore(res.data)
+            },
 	      	searchMore() {
 		        if (!this.hasMore) {
 		          return
