@@ -7,8 +7,8 @@
 ================================界面预览================================
 ![整体app预览](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music.jpg)
 ![手机端预览效果图1](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_01.jpg)
-![[手机端预览效果图3](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_02.jpg)
-![[手机端预览效果图3](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_03.jpg)
+![手机端预览效果图3](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_02.jpg)
+![手机端预览效果图3](https://raw.githubusercontent.com/wuyuanwuhui99/vue_music/main/music_03.jpg)
 ================================界面预览================================
 
 
