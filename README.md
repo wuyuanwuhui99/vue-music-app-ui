@@ -44,3 +44,30 @@ vue-router: 3.0.1 ——vue路由
 
 vuex: 3.0.1 ——vuex状态管理器
 
+**nginx配置如下**
+
+    upstream music_server{
+        server 127.0.0.1:3000 weight=10;
+        server 127.0.0.1:3001 weight=10;
+    }
+
+    server{
+        listen       3002;
+        #静态资源，包括系统所需要的图片，js、css等静态资源
+        location / {
+            alias E:/vue/mymusic/dist/;
+        }
+        location /service/ {
+            proxy_pass http://music_server;
+            #proxy_pass 127.0.0.1:3000;
+        }
+        location /static/ {
+            alias E:/static/;
+        }
+        location /images/ {
+            alias E:/static/music/images/;
+        }
+        location /audio/ {
+            alias E:/static/music/audio/;
+        }
+    }
