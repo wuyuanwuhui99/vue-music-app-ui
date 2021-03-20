@@ -455,8 +455,9 @@
                 if (newSong.id == oldSong.id) {
                     return
                 }
-                let result =await queryFavorite({userId: this.userData.userId, mid: newSong.mid});
-                this.favoriteFlag = result.data.length > 0 ? true : false
+                queryFavorite({mid: newSong.mid}).then((result)=>{
+                    this.favoriteFlag = result.data.length > 0 ? true : false
+                });
                 var _this = this;
                 if (this.currentLyric) {
                     this.currentLyric.stop()

@@ -40,7 +40,7 @@
 			},
 			async _getSingerList() {
                 let res = await getSingerList();
-                this.singers = this._normalizeSinger(res.data);
+                this.singers = this._normalizeSinger(res.data.list);
             },
 			_normalizeSinger(list){
 				let map={

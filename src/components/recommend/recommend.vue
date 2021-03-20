@@ -39,9 +39,9 @@
 	import Scroll from 'base/scroll/scroll'
 	import Slider from 'base/slider/slider';
 	import {getRecommend, getDiscList} from 'api/recommend';
-	import {ERR_OK} from 'api/config';
 	import {playlistMixin} from 'common/js/mixin';
 	import {mapMutations} from 'vuex'
+    import {getValue} from "common/js/util"
 	export default {
 		mixins:[playlistMixin],
 		components:{
@@ -75,13 +75,14 @@
 			
 			async _getRecommend() {
                 let res = await getRecommend();
-                this.recommends = res.data;
+                let list = getValue(res,["data","focus","data","shelf","v_niche","0","v_card"],[]);
+                this.recommends = list;
             },
 			
-			_getDiscList(){
-				let res = getDiscList();
-                this.discList=res.list;
-			},
+			async _getDiscList() {
+                let res = await getDiscList();
+                this.discList = res.list;
+            },
 			
 			loadImage(){
 				if(!this.checkloaded){

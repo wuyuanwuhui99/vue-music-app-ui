@@ -34,7 +34,6 @@
         async created() {
             let result  = await getUserData()
             this.setUserData(result.data);
-            this.setToken(result.token);
             localStorage.setItem("token", result.token);
         },
 

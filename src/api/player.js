@@ -10,6 +10,6 @@ export const getAudioUrl=(currentSong,filename) =>{
 }
 
 export const getSingleSong=(songmid)=> {
-    return HttpUtil.get("/service/music/getSingleSong/", {params:{mid:songmid}})
+    return HttpUtil.get("/service/music/getSingleSong/", {params:{songmid}})
 }
 

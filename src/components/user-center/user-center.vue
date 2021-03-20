@@ -110,7 +110,7 @@
 			]),
 			  
 			async getFavoriteMusic() {
-                await getFavorite(this.userData.userId);
+                let res = await getFavorite();
                 this.favoriteList = res.data || []
             }
 	    },

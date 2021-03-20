@@ -10,6 +10,7 @@
 	import {ERR_OK} from 'api/config'
 	import {mapGetters} from 'vuex'
 	import {createSong} from 'common/js/song'
+    import {getValue} from 'common/js/util';
 
   	export default {
     	computed: {
@@ -38,7 +39,8 @@
                 return
             }
             let res = await getSongList(this.disc.dissid);
-            this.songs = this._normalizeSongs(res.songlist)
+            let list = getValue(res,["cdlist","0","songlist"],[])
+            this.songs = this._normalizeSongs(list)
         },
       	_normalizeSongs(list) {
         	let ret = []

@@ -11,20 +11,20 @@ export const getLyric=(songmid)=> {
 }
 
 export const addFavorite=(params)=>{
-  return HttpUtil.post("/service/music/addFavorite/",{...params,userId:store.state.userData.userId,lyric:encodeURIComponent(params.lyric)});
+  return HttpUtil.post("/service/music-getway/addFavorite/",{...params,userId:store.state.userData.userId,lyric:encodeURIComponent(params.lyric)});
 }
 
 export const deleteFavorite=(params)=>{
-  return HttpUtil.post("/service/music/deleteFavorite/",{...params,userId:store.state.userData.userId});
+  return HttpUtil.post("/service/music-getway/deleteFavorite/",{...params,userId:store.state.userData.userId});
 }
 
 export const getFavorite=(userId)=>{
-  return HttpUtil.get("/service/music/getFavorite/",{params:{userId}})
+  return HttpUtil.get("/service/music-getway/getFavorite/",{params:{userId}})
 }
 
 //查询是否已经收藏了该歌曲
 export const queryFavorite=(params)=>{
-  return HttpUtil.get("/service/music/queryFavorite/",{params})
+  return HttpUtil.get("/service/music-getway/queryFavorite/",{params})
 }
 
 //记录播放次数

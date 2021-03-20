@@ -16,15 +16,15 @@ module.exports = {
                 changeOrigin: true,  //是否跨域
             },
             "/images": {
-                target: "http://localhost:3000/",
+                target: "http://localhost:3002/",
                 changeOrigin: true,  //是否跨域
             },
             "/static": {
-                target: "http://localhost:3001/",
+                target: "http://localhost:3002/",
                 changeOrigin: true,  //是否跨域
             },
             "/audio": {
-                target: "http://localhost:3000/",
+                target: "http://localhost:3002/",
                 changeOrigin: true,  //是否跨域
             }
         },
