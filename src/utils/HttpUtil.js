@@ -17,7 +17,8 @@ export default class HttpUtil {
     static get(url,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            options.headers.Authorization = this.getToken();
+            let token = this.getToken();
+            if(token)options.headers.Authorization = token;
             axios.get(url,options).then((res)=>{
                 if(res.data.status=="SUCCESS"){
                     if(res.data.token){
@@ -41,7 +42,8 @@ export default class HttpUtil {
     static post(url, data,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            options.headers.Authorization = this.getToken();
+            let token = this.getToken();
+            if(token)options.headers.Authorization = token;
             axios.post(url, data, options).then((res)=>{
                 if(res.data.status=="SUCCESS"){
                     if(res.data.token){
@@ -65,7 +67,8 @@ export default class HttpUtil {
     static delete(url, data,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            options.headers.Authorization = this.getToken();
+            let token = this.getToken();
+            if(token)options.headers.Authorization = token;
             axios.delete(url, data, options).then((res)=>{
                 if(res.data.status=="SUCCESS"){
                     if(res.data.token){
@@ -91,7 +94,8 @@ export default class HttpUtil {
     static put(url, data,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            options.headers.Authorization = this.getToken();
+            let token = this.getToken();
+            if(token)options.headers.Authorization = token;
             axios.put(url, data, options).then((res) => {
                 if (res.data.status == "SUCCESS") {
                     if(res.data.token){

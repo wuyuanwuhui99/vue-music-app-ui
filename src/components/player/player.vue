@@ -456,7 +456,7 @@
                     return
                 }
                 queryFavorite({mid: newSong.mid}).then((result)=>{
-                    this.favoriteFlag = result.data.length > 0 ? true : false
+                    this.favoriteFlag = result.data > 0 ? true : false
                 });
                 var _this = this;
                 if (this.currentLyric) {
