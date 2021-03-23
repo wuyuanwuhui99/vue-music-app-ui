@@ -27,9 +27,12 @@ export function debounce(func, delay) {
 }
 
 export function getValue(data,props,defaultValue){
-  if(typeof data !== "object"){
+  if(typeof data !== "object" || !data){
     return defaultValue
   }
+  if(typeof keys == "string"){
+    props = props.split(".")  
+  }  
   let result = data;
   for(let i = 0; i < props.length; i++){
     if(i != props.length - 1){
@@ -45,9 +48,12 @@ export function getValue(data,props,defaultValue){
 }
 
 export function setValue(data,props,value){
-  if(typeof data !== "object"){
+  if(typeof data !== "object" || !data){
     return 
   }
+  if(typeof keys == "string"){
+    props = props.split(".")  
+  } 
   let result = data;
   for(let i = 0; i < props.length; i++){
     if(i != props.length - 1){
