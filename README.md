@@ -64,10 +64,4 @@ vuex: 3.0.1 ——vuex状态管理器
         location /static/ {
             alias E:/static/;
         }
-        location /images/ {
-            alias E:/static/music/images/;
-        }
-        location /audio/ {
-            alias E:/static/music/audio/;
-        }
     }
