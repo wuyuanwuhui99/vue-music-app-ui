@@ -65,3 +65,5 @@ vuex: 3.0.1 ——vuex状态管理器
             alias E:/static/;
         }
     }
+
+后端项目和sql语句：https://github.com/wuyuanwuhui99/springboot-app-service
