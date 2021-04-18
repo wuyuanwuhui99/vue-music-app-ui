@@ -79,7 +79,7 @@
                                 </li>
                             </ul>
                         </form>
-                        
+
                     </li>
                 </ul>
 
@@ -139,7 +139,7 @@ export default {
             }else{
                 this[type].passwordInput = true;
             }
-            
+
         },
 
         tab(index) {
@@ -156,7 +156,8 @@ export default {
                 this.tipContent = "请输入密码";
                 return;
             }
-            var password = md5(md5(this.loginParams.password).substr(4,7)+md5(this.loginParams.password));   
+            // var password = md5(md5(this.loginParams.password).substr(4,7)+md5(this.loginParams.password));
+            var password = md5(this.loginParams.password);
             doLogin({...this.loginParams,password}).then(result => {
                 this.showTip = true;
                 this.tipContent = "登录成功";
@@ -183,7 +184,7 @@ export default {
                 this.showTip = true;
                 this.tipContent = "请输入邮箱";
             }else {
-                var password = md5(md5(this.registerParams.password).substr(4,7)+md5(this.registerParams.password));   
+                var password = md5(md5(this.registerParams.password).substr(4,7)+md5(this.registerParams.password));
                 register({...this.registerParams,password}).then((result)=>{
                     this.showTip = true;
                     this.tipContent = "注册成功";
@@ -195,7 +196,7 @@ export default {
                     this.showTip = true;
                     this.tipContent = "账号已存在";
                 })
-            }        
+            }
         }
     },
 
@@ -319,7 +320,7 @@ export default {
                                 color: @color-text-l;
                                 font-size: @font-size-medium;
                             }
-                            &:-webkit-autofill { 
+                            &:-webkit-autofill {
                                 box-shadow: 0 0 0px 1000px transparent inset;
                             }
                         }
