@@ -44,7 +44,7 @@ vue-router: 3.0.1 ——vue路由
 
 vuex: 3.0.1 ——vuex状态管理器
 
-**nginx配置如下**
+**nginx反向代理配置如下**
 
     upstream music_server{
         server 127.0.0.1:3000 weight=10;
