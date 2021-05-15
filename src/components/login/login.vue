@@ -162,11 +162,9 @@ export default {
                 this.showTip = true;
                 this.tipContent = "登录成功";
                 this.setUserData(result.data);
+                localStorage.setItem("token", result.token);
                 this.setShowLogin(false);
-                setTimeout(() => {
-                    this.$router.go(-1);
-                }, 2000);
-
+                this.$router.replace("/");
             });
         },
 

@@ -8,6 +8,6 @@ export const register = (params) => {
     return HttpUtil.post("/service/music/register/", params)
 }
 
-export const getUserData = () => {
-    return HttpUtil.get("/service/music/getUserData/");
+export const getUserData = (params) => {
+    return HttpUtil.get("/service/music/getUserData/",{params});
 }

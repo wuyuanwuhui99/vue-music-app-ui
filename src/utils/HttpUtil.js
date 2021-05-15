@@ -2,13 +2,6 @@ import axios from "axios";
 
 export default class HttpUtil {
 
-    static token = "";
-
-    static getToken(){
-        if(!this.token)this.token = localStorage.getItem("token")
-        return this.token;
-    };
-
     /**
      * 利用 Promise 的 get 方式请求
      * @param url
@@ -17,13 +10,11 @@ export default class HttpUtil {
     static get(url,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            let token = this.getToken();
-            if(token)options.headers.Authorization = token;
+            options.headers.Authorization = localStorage.getItem("token");
             axios.get(url,options).then((res)=>{
                 if(res.data.status=="SUCCESS"){
                     if(res.data.token){
-                        this.token = res.data.token;
-                        localStorage.getItem("token")
+                        localStorage.setItem("token",HttpUtil.token = res.data.token);
                     }
                     resolve(res.data);
                 }else{
@@ -42,13 +33,11 @@ export default class HttpUtil {
     static post(url, data,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            let token = this.getToken();
-            if(token)options.headers.Authorization = token;
+            options.headers.Authorization = localStorage.getItem("token");;
             axios.post(url, data, options).then((res)=>{
                 if(res.data.status=="SUCCESS"){
                     if(res.data.token){
-                        this.token = res.data.token;
-                        localStorage.getItem("token")
+                        localStorage.setItem("token",HttpUtil.token = res.data.token);
                     }
                     resolve(res.data);
                 }else{
@@ -67,13 +56,11 @@ export default class HttpUtil {
     static delete(url, data,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            let token = this.getToken();
-            if(token)options.headers.Authorization = token;
+            options.headers.Authorization = localStorage.getItem("token");;
             axios.delete(url, data, options).then((res)=>{
                 if(res.data.status=="SUCCESS"){
                     if(res.data.token){
-                        this.token = res.data.token;
-                        localStorage.getItem("token")
+                        localStorage.setItem("token",HttpUtil.token = res.data.token);
                     }
                     resolve(res.data);
                 }else{
@@ -94,13 +81,11 @@ export default class HttpUtil {
     static put(url, data,options={}) {
         return new Promise((resolve, reject) => {
             if(!options.headers)options.headers = {}
-            let token = this.getToken();
-            if(token)options.headers.Authorization = token;
+            options.headers.Authorization = localStorage.getItem("token");;
             axios.put(url, data, options).then((res) => {
                 if (res.data.status == "SUCCESS") {
                     if(res.data.token){
-                        this.token = res.data.token;
-                        localStorage.getItem("token")
+                        localStorage.setItem("token",HttpUtil.token = res.data.token);
                     }
                     resolve(res.data);
                 } else {
