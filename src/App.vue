@@ -34,11 +34,7 @@
         async created() {
             let result  = await getUserData()
             this.setUserData(result.data);
-            if(result.token)localStorage.setItem("token", result.token);
         },
-
-        mounted() {
-        }
     }
 </script>
 
